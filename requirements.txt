@@ -1,0 +1,10 @@
+python-dotenv
+pandas
+numpy
+pymongo
+certifi
+-e .
+# -e. refers to the setup.py file and is going to execute this setup()
+# This -e . should be added at the last when our project is ready and we 
+# want to create a final project
+# This usually is done when we want to deploy it into cloud
