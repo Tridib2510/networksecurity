@@ -3,6 +3,7 @@ pandas
 numpy
 pymongo
 certifi
+scikit-learn
 pymongo[srv]==3.6
 -e .
 # -e. refers to the setup.py file and is going to execute this setup()
