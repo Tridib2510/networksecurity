@@ -41,3 +41,46 @@ class DataIngestionConfig:
         self.train_test_split_ratio:float=training_pipeline.DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO
         self.collection_name:str=training_pipeline.DATA_INGESTION_COLLECTION_NAME
         self.database_name:str=training_pipeline.DATA_INGESTION_DATABASE_NAME
+
+
+
+        # Now we work with data validation
+
+        """
+        Whenever we read something from MongoDB the Schema should not be changed
+        The change in the distribution of the data is termed as data drift
+        "Data drift" means that the data your machine learning (ML)
+          model sees in production is different from the data it was trained on.
+         This can reduce the model’s accuracy or even make it unusable if 
+         not monitored
+
+         To solve this we should create something called a data drift report
+         A data drift report is a document (or dashboard) that 
+         summarizes how your production data differs from your training
+           (reference) data.
+        
+        In data validation component we check the following
+        1)Same Schema-->Same no of features,distribution
+        2)Data drift
+        3)Validate no of columns,Numerical columns exist or not
+
+
+
+        """
+        # In this config_entity we are going to define our data validation config
+class DataValidationConfig:
+    # F12
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.data_validation_dir: str = os.path.join( training_pipeline_config.artifact_dir, training_pipeline.DATA_VALIDATION_DIR_NAME)
+        self.valid_data_dir: str = os.path.join(self.data_validation_dir, training_pipeline.DATA_VALIDATION_VALID_DIR)
+        self.invalid_data_dir: str = os.path.join(self.data_validation_dir, training_pipeline.DATA_VALIDATION_INVALID_DIR)
+        self.valid_train_file_path: str = os.path.join(self.valid_data_dir, training_pipeline.TRAIN_FILE_NAME)
+        self.valid_test_file_path: str = os.path.join(self.valid_data_dir, training_pipeline.TEST_FILE_NAME)
+        self.invalid_train_file_path: str = os.path.join(self.invalid_data_dir, training_pipeline.TRAIN_FILE_NAME)
+        self.invalid_test_file_path: str = os.path.join(self.invalid_data_dir, training_pipeline.TEST_FILE_NAME)
+        self.drift_report_file_path: str = os.path.join(
+            self.data_validation_dir,
+            training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR,
+            training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME,
+        )
+        
