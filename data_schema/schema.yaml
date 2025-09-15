@@ -1,4 +1,5 @@
 # Here we are going to define our schema itself
+# In ML / data engineering projects, a schema.yaml file is usually used as a blueprint for the dataset. It defines the structure, rules, and constraints of your data so you can validate incoming datasets before using them for training or inference.
 columns:
   - having_IP_Address: int64
   - URL_Length: int64
