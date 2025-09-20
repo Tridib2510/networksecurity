@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Tridib%20Roy%20Chowdhury/OneDrive/Desktop/CODING/NetworkSecurity/mlruns/0/models/m-42bc77585cc747e6970416ef1053abf7/artifacts
+creation_timestamp: 1758373770683
+experiment_id: '0'
+last_updated_timestamp: 1758373776212
+model_id: m-42bc77585cc747e6970416ef1053abf7
+model_type: null
+name: model
+source_run_id: 066c2b63b832468e9749280e81d27dbc
+status: 2
+status_message: null

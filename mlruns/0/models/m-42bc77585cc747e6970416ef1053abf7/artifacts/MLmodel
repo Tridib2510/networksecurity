@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/Tridib%20Roy%20Chowdhury/OneDrive/Desktop/CODING/NetworkSecurity/mlruns/0/models/m-42bc77585cc747e6970416ef1053abf7/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.4.0
+model_id: m-42bc77585cc747e6970416ef1053abf7
+model_size_bytes: 27037888
+model_uuid: m-42bc77585cc747e6970416ef1053abf7
+prompts: null
+run_id: 066c2b63b832468e9749280e81d27dbc
+utc_time_created: '2025-09-20 13:09:30.998865'
