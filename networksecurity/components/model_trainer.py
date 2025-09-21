@@ -1,7 +1,12 @@
 import os
 import sys
 import mlflow
-
+import dagshub
+dagshub.init(repo_owner='tridibroychowdhury9', repo_name='networksecurity', mlflow=True)
+# whenever we use mlflow it will automatically log in dagshub
+# Dagshub is a platform that combines version control, data management, and collaboration tools for
+#  machine learning projects. It integrates with Git and GitHub to 
+# provide a seamless workflow for data scientists and machine learning engineers.
 from networksecurity.exception.exception import NetworkSecurtiyException
 from networksecurity.logging.logger import logging
 
@@ -115,6 +120,13 @@ class ModelTrainer:
         Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path,obj=Network_Model)
         
+        # We need to push the model.pkl and preprocessor.pkl file and push it to 
+        # one commmon folder from where we are going to do prediction
+
+        
+        # Here we save the model in a file named model.pkl inside a folder named final_model
+        save_object("final_model/model.pkl",best_model)
+
         # Model Trainer  Artifact
         model_trainer_artifact= ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                              train_metric_artifact=classification_train_metric,

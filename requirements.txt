@@ -6,6 +6,7 @@ certifi
 scikit-learn
 pymongo[srv]==3.6
 pyaml
+dagshub
 mlflow
 -e .
 # -e. refers to the setup.py file and is going to execute this setup()
