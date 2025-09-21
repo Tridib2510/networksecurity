@@ -14,7 +14,7 @@ import pymongo
 from networksecurity.exception.exception import NetworkSecurtiyException
 from networksecurity.logging.logger import logging
 from networksecurity.pipeline.training_pipeline import TrainingPipeline
-
+from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 """
 FastAPI is a modern, fast (high-performance) web framework for 
 building APIs with Python.
@@ -53,6 +53,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+from fastapi.templating import Jinja2Templates
+# Jinja2Templates is used to render HTML templates using the 
+# Jinja2 templating engine.
+templates=Jinja2Templates(directory="./templates")
 
 @app.get("/",tags=["authentication"])
 # It groups this endpoint under the tag Authentication in the API docs.
@@ -72,6 +76,28 @@ async def train_route():
 if __name__=="__main__":
     app.run(app,host="localhost",port=8000)
 
+@app.post("/predict")
+async def predict_route(request:Request,file:UploadFile=File(...)):
+    # File(...) indicates that this parameter is required.
+    try:
+        df=pd.read_csv(file.file)
+        preprocessor=load_object("final_model/preprocessor.pkl")
+        final_model=load_object("final_model/model.pkl")
+        network_model=NetworkModel(preprocessor=preprocessor,model=final_model)
+        print(df.iloc[0])
+        y_pred=network_model.predict(df)
+        print(y_pred)
+        df["predicted_column"]=y_pred
+        print(df['predicted_column'])
+        df.to_csv("prediction_output/output.csv")
+        # Saves the DataFrame with predictions to a CSV file.
+        # We can also update this csv to mongodb if needed
+        table_html=df.to_html(classes="table table-striped")
+        # Converts the DataFrame to an HTML table with Bootstrap classes for styling.
+        return templates.TemplateResponse("table.html",{"request":request,"table":table_html})
+        # Renders the table.html template, passing the request and the generated HTML table.
+    except Exception as e:
+        raise NetworkSecurtiyException(e,sys)
 """
 uvicorn app:app --reload
 The command to run the FastAPI application using Uvicorn.
