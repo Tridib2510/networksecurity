@@ -1,0 +1,26 @@
+name: workflow
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  integration:
+     name: Continuous integration
+     runs-on: ubuntu-latest #Provided by the Github actions itself
+  steps:
+  #Checkout code from the github action repository
+    name: Checkout code
+    uses: actions/checkout@v3
+#echo this code Linting repository
+    name: Lint code
+    run: echo "Linting repository"
+
+##Run some unit test cases (Here we are not running any test cases)
+    name: Run unit tests
+    run: echo "Running unit tests"
+
+    
