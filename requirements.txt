@@ -7,6 +7,8 @@ scikit-learn
 pymongo[srv]==3.6
 pyaml
 dagshub
+fastapi
+uvicorn
 mlflow
 -e .
 # -e. refers to the setup.py file and is going to execute this setup()
