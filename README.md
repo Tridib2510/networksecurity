@@ -1,12 +1,4 @@
-Got it ✅
-I’ll draft you a **professional, GitHub-ready `README.md`** for your `networksecurity` repo.
-This template assumes your project is about **end-to-end phishing URL / network attack detection with MLflow tracking + FastAPI deployment** (based on your repo contents).
 
-Here’s a clean version you can paste directly:
-
----
-
-```markdown
 # 🔐 Network Security System
 
 An **end-to-end Machine Learning project** for detecting malicious / phishing URLs and strengthening network security.  
@@ -132,9 +124,7 @@ Feel free to use, modify, and distribute with attribution.
 **Tridib Roy Chowdhury**
 🔗 [LinkedIn](https://www.linkedin.com/in/tridib-roy-chowdhury-665a9529a/) | [GitHub](https://github.com/Tridib2510)
 
----
 
-```
 
 ---
 
@@ -142,3 +132,5 @@ Feel free to use, modify, and distribute with attribution.
 
 Would you like me to also make a **badges section** (Python, FastAPI, Docker, MLflow, etc.) at the top of the README so it looks more polished on GitHub?
 ```
+
+
